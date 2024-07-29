@@ -9,17 +9,19 @@
 </head>
 <body>
     <div class="sidebar">
-        <h1>Add a book</h1>
+        <h1>Library</h1>
+
         <form>
+            <h2>Add a book</h2>
             <label for="title">What's the title?</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
             <label for="author">Who's the author?</label>
-            <input type="text" name="author" id="author">
+            <input type="text" name="author" id="author" required>
             <label for="pages">How many pages?</label>
-            <input type="number" name="pages" id="pages">
+            <input type="number" name="pages" id="pages" required>
             <div>
                 <input type="checkbox" name="read" id="read" value="read">
-                <label for="read">Read</label>
+                <label for="read">I've read the book</label>
             </div>
             <button>Add Book</button>
         </form>

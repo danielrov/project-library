@@ -30,7 +30,7 @@ function createCard(book) {
 
     const author = document.createElement("p");
     author.className = "author";
-    author.innerText = book.author;
+    author.innerText = "By " + book.author;
     card.appendChild(author);
 
     const pages = document.createElement("p");
@@ -38,19 +38,24 @@ function createCard(book) {
     pages.innerText = book.pages + " pages";
     card.appendChild(pages);
 
-    const read = document.createElement("p");
-    read.className = "read";
+    const read = document.createElement("input");
+    read.setAttribute("type", "checkbox");
+    const readLabel = document.createElement("label");
+    readLabel.innerText = "Read"
+    readLabel.className = "read";
     if (book.read) {
-        read.innerText = "Read ✅";
-    } else {
-        read.innerText = "Not read ❌";
+        read.checked = true;
     };
-    card.appendChild(read);
+    readLabel.appendChild(read);
+    card.appendChild(readLabel);
 
+    const removeSection = document.createElement("div");
+    removeSection.className = "removeSection";
     const remove = document.createElement("button");
+    remove.innerHTML = "<img src=\ './delete_icon.svg\'>";
     remove.className = "remove";
-    remove.innerText = "Remove";
-    card.appendChild(remove);
+    removeSection.appendChild(remove)
+    card.appendChild(removeSection);
 
     removable();
 }
@@ -75,7 +80,7 @@ function removable() {
 
     removeButtons.forEach(button => {
         button.addEventListener("click", function() {
-            toRemove = button.parentNode.id;
+            toRemove = button.parentNode.parentNode.id;
             delete myLibrary[toRemove];
             toDelete = document.getElementById(toRemove);
             toDelete.remove();
@@ -83,5 +88,5 @@ function removable() {
     });
 };
 
-addBookToLibrary("The Hobbit", "JRR Tolkien", "234", true)
-addBookToLibrary("Harry Potter", "JK Rowling", "123", false)
+addBookToLibrary("The Hobbit", "J. R. R. Tolkien", "347", true)
+addBookToLibrary("Harry Potter", "J.K. Rowling", "333", false)
